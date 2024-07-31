@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users: one
+  date: 2024-07-31
+  mode_type: MyString
+
+two:
+  users: two
+  date: 2024-07-31
+  mode_type: MyString
