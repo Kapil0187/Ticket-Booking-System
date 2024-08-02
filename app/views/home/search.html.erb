@@ -1,0 +1,13 @@
+<h1>Search Result</h1>
+
+<table>
+	<% @buses.each do |bus|%>
+		<tr>
+			<td> <%= bus.name%> <td>
+			<td> <%= bus.total_seets %> </td>
+			<td> <%= bus.departure_time %> </td>
+			<td> <%= bus.arrival_time %> </td>
+			<td> <%= bus.bustype %></td>
+		<tr>
+	<%end%>
+<table>

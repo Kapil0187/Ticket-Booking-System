@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_081040) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_01_102054) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date"
@@ -22,9 +22,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_081040) do
 
   create_table "buses", force: :cascade do |t|
     t.string "name"
-    t.string "total_seets"
-    t.datetime "departure_time"
-    t.datetime "arrival_time"
+    t.integer "total_seets"
+    t.time "departure_time"
+    t.time "arrival_time"
     t.integer "direction_id", null: false
     t.string "bustype"
     t.datetime "created_at", null: false

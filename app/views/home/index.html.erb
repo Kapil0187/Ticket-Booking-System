@@ -4,4 +4,10 @@
 <% else %>
   <%= button_to "Sign in", new_user_session_path %> 
 <% end %>
-<h1> This is heading for Registration </h1>
+<h1> Search Your Buses</h1>
+
+<form action='/search'>
+  <input name='source'  placeholder="Enter your source">
+  <input name='destination' placeholder="Enter your destination">
+  <button type='submit' >Search</button>
+</form>
