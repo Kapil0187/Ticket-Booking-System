@@ -1,13 +1,27 @@
-<h1>Search Result</h1>
+<%= render :partial => 'comman/nav'%>
 
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Bus Name</th>
+			<th scope="col">Total Seets</th>
+			<th scope="col">Departure Time</th>
+			<th scope="col">Arrival Time</th>
+			<th scope="col">Bus Type</th>
+			<th scope="col">Bus Booking</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @buses.each do |bus|%>
+			<tr>
+				<td> <%= bus.name%> </td>
+				<td> <%= bus.total_seets %> </td>
+				<td> <%= bus.departure_time.to_fs(:time)%> </td>
+				<td> <%= bus.arrival_time.to_fs(:time)%> </td>
+				<td> <%= bus.bustype %></td>
+				<td> <%= link_to "Book Ticket", "bookingtickets/booking_form" %></td>
+			<tr>
+		<%end%>
+	</tbody>
 <table>
-  <% @buses.each do |bus|%>
-    <tr>
-       <td> <%= bus.name%> <td>
-       <td> <%= bus.total_seets %> </td>
-       <td> <%= bus.departure_time %> </td>
-       <td> <%= bus.arrival_time %> </td>
-       <td> <%= bus.bustype %></td>
-    <tr>
-  <%end%>
-<table>
+

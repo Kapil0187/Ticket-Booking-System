@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ticket Booking</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Bus</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Train</a>
+      </li>
+    </ul>
+        <% if user_signed_in? %> 
+        <div> Welcome <%= current_user.email %> </div> 
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+        <% else %>
+        <%= button_to "Sign in", new_user_session_path %> 
+        <% end %>
+  </div>    
+</nav>
