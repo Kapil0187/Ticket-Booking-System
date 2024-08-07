@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_05_100937) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_07_063434) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date"
     t.string "mode_type"
-    t.datetime "created_at", null: false  
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
     t.string "gender"
+    t.integer "bus_id", null: false
+    t.index ["bus_id"], name: "index_bookings_on_bus_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -67,6 +69,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_100937) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "buses"
   add_foreign_key "bookings", "users"
   add_foreign_key "buses", "directions"
   add_foreign_key "tickets", "bookings"

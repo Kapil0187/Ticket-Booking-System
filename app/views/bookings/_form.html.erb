@@ -4,7 +4,8 @@
   <%= form.hidden_field :user_id, value: current_user.id%>
   <%= form.hidden_field :date, value:Date.today%>
   <%= form.hidden_field :mode_type, value:"Bus"%>
-
+  <%= form.hidden_field :bus_id, value:params[:bus_id]%>
+  
   <%= form.label :first_name, "First Name:" %><br>
   <%= form.text_field "first_name" %><br><br>
 
