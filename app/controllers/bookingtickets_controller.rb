@@ -1,3 +1,0 @@
-class BookingticketsController < ApplicationController
-
-end

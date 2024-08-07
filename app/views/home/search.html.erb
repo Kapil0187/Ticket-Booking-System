@@ -19,7 +19,7 @@
 				<td> <%= bus.departure_time.to_fs(:time)%> </td>
 				<td> <%= bus.arrival_time.to_fs(:time)%> </td>
 				<td> <%= bus.bustype %></td>
-				<td> <%= link_to "Book Ticket", "bookingtickets/booking_form" %></td>
+				<td> <%= link_to "Book Ticket", new_booking_path %> </td>
 			<tr>
 		<%end%>
 	</tbody>

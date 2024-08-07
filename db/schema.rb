@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_100937) do
     t.integer "user_id", null: false
     t.date "date"
     t.string "mode_type"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", null: false  
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
