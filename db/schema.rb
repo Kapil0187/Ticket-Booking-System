@@ -10,17 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_07_063434) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_08_141722) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date"
     t.string "mode_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "age"
-    t.string "gender"
     t.integer "bus_id", null: false
     t.index ["bus_id"], name: "index_bookings_on_bus_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
@@ -48,12 +44,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_063434) do
 
   create_table "tickets", force: :cascade do |t|
     t.integer "seat_no"
-    t.integer "bus_id", null: false
     t.integer "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "gender"
     t.index ["booking_id"], name: "index_tickets_on_booking_id"
-    t.index ["bus_id"], name: "index_tickets_on_bus_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,5 +71,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_063434) do
   add_foreign_key "bookings", "users"
   add_foreign_key "buses", "directions"
   add_foreign_key "tickets", "bookings"
-  add_foreign_key "tickets", "buses"
 end

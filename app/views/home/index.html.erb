@@ -1,10 +1,16 @@
-<%= render :partial => 'comman/nav'%>
+<%= render :partial => 'comman/nav' %>
 
-<h1> Search Your Buses</h1>
+<div class="d-flex justify-content-center align-items-center" >
+  <div class="text-center" >
+    <h1> Search Your Buses </h1>
 
-<form action='/search'>
-  <input name='source'  placeholder="Enter your source">
-  <input name='destination' placeholder="Enter your destination">
-  <button type='submit' >Search</button>
-</form>
- 
+    <%= form_with url: "/search", method: :get do |form| %>
+    <%= form.text_field :source , placeholder: "Enter your source" %>
+    <%= form.text_field :destination , placeholder: "Enter your destination" %>
+    <%= form.date_field :date %>
+    <%= form.submit "bus_search" %>
+    <% end %>  
+    
+  </div>
+</div>
+
