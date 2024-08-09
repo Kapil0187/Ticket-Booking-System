@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
   belongs_to :user
-  has_many :tickets
+  belongs_to :bus
+  has_many :tickets ,dependent: :destroy
 end

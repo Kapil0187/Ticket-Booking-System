@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <%= render :partial => 'form' %>
+<% else %>
+  <p> Please Sign Up or Sign In to book ticket. </p>
+  <h2> <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
+

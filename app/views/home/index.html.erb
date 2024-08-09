@@ -1,13 +1,16 @@
-<% if user_signed_in? %> 
- <div> Welcome <%= current_user.email %> </div> 
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-<% else %>
-  <%= button_to "Sign in", new_user_session_path %> 
-<% end %>
-<h1> Search Your Buses</h1>
+<%= render :partial => 'comman/nav' %>
 
-<form action='/search'>
-  <input name='source'  placeholder="Enter your source">
-  <input name='destination' placeholder="Enter your destination">
-  <button type='submit' >Search</button>
-</form>
+<div class="d-flex justify-content-center align-items-center" >
+  <div class="text-center" >
+    <h1> Search Your Buses </h1>
+
+    <%= form_with url: "/search", method: :get do |form| %>
+    <%= form.text_field :source , placeholder: "Enter your source" %>
+    <%= form.text_field :destination , placeholder: "Enter your destination" %>
+    <%= form.date_field :date %>
+    <%= form.submit "bus_search" %>
+    <% end %>  
+    
+  </div>
+</div>
+
