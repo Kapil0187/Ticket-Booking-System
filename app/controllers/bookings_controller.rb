@@ -6,9 +6,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    if @booking.save
-      manage_ticket
-    end
+    @booking.save
   end       
 
   def show
@@ -17,13 +15,13 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.require(:booking).permit(:first_name,:last_name,:age,:gender,:user_id,:date,:mode_type,:bus_id)
+    params.require(:booking).permit(:user_id,:date,:mode_type,:bus_id)
   end
  
-  def manage_ticket
-    seat_no = (Ticket.last==nil) ? 1 : Ticket.last.seat_no + 1
-    @remaning_seet = Bus.find_by(id: @booking.bus_id).total_seets - seat_no
-    @ticket = Ticket.create(seat_no: seat_no, bus_id: @booking.bus_id, booking_id: @booking.id)
-    redirect_to booking_path(@booking)
-  end
+  # def manage_ticket
+  #   seat_no = (Ticket.last==nil) ? 1 : Ticket.last.seat_no + 1
+  #   @remaning_seet = Bus.find_by(id: @booking.bus_id).total_seets - seat_no
+  #   @ticket = Ticket.create(seat_no: seat_no, bus_id: @booking.bus_id, booking_id: @booking.id)
+  #   redirect_to booking_path(@booking)
+  # end
 end
