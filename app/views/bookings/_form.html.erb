@@ -1,50 +1,71 @@
-<%= render :partial => 'comman/nav' %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Forms</title>
+</head>
+<style>
+    .form-container{
+        margin: 20px 10px;
+    }
 
-<div class='d-flex justify-content-center'>
-  <%= form_with model: Booking.new, url: bookings_path, method: :post do |form| %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.hidden_field :date, value:Date.today %>
-    <%= form.hidden_field :mode_type, value:"Bus" %>
-    <%= form.hidden_field :bus_id, value:params[:bus_id] %>
-    
-    <div>
-    <%= form.label :first_name, "First Name:" %><br>
-    <%= form.text_field "first_name" %><br><br>
+    .form-group{
+        margin: 8px 2px;
+    }
 
-    <%= form.label :last_name, "Last Name:" %><br>
-    <%= form.text_field "last_name" %><br><br>
-
-    <%= form.label :age, "age:" %><br>
-    <%= form.text_field "age"%><br><br>
-
-    <%= form.radio_button :gender, "Male" %>
-    <%= form.label :gender_male, "Male" %>
-    <%= form.radio_button :gender, "Female" %>
-    <%= form.label :gender_female, "Female" %> <br><br>
-    </div>
-    <div id="add_traveller">This is text</div>
-    <button onclick="Add_Traveller()"> Add Traveller </button>
-    <%= form.submit %>
+    .ticket-fields-container {
+        margin-bottom: 20px;
+    }
+</style>
+<body>
+<%= render 'comman/nav'%>
+<%= form_with model: @booking, url: bookings_path, method: :post, local: true do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :date, value: Date.today %>
+  <%= form.hidden_field :mode_type, value: "Bus" %>
+  <%= form.hidden_field :bus_id, value: params[:bus_id] %>
+  <%= form.fields_for :tickets do |f| %>
+    <%= render 'ticket_fields', f: f %>
   <% end %>
-</div>
+  <div id="forms-container">
+    
+  </div>
+  <button type="button" id="add-form-btn">Add Traveller</button>
+  <%= form.submit 'Book Tickets' %>
+<% end %>
 
 <script>
-  function Add_Traveller(){
-    return (documnet.getElementById("add_traveller").innerHTML(
-      <form>
-        <label for="name">Name :</label><br>
-        <input type="text" id="name" name="name"><br><br>
-    
-        <label for="age">Name :</label><br>
-        <input type="text" id="age" name="age"><br><br>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addFormButton = document.getElementById('add-form-btn');
+    const formsContainer = document.getElementById('forms-container');
+    let formIndex = <%= @booking.tickets.size %>; 
 
-        <input type="radio" id="contactChoice1" name="contact" value="email" />
-        <label for="contactChoice1">Email</label>
+    addFormButton.addEventListener('click', () => {
+      const newForm = document.createElement('div');
+        newForm.className = 'ticket-fields-container';
 
-        <input type="radio" id="contactChoice2" name="contact" value="phone" />
-        <label for="contactChoice2">Phone</label>
-      </form>
-    ))
-  }
+        newForm.innerHTML = `
+          <div class="form-container">
+            <div class="form-group">
+              <label for="booking_tickets_attributes_${formIndex}_name">Name:</label>
+              <input type="text" name="booking[tickets_attributes][${formIndex}][name]" id="booking_tickets_attributes_${formIndex}_name">
+            </div>
+            <div class="form-group">
+              <label for="booking_tickets_attributes_${formIndex}_age">Age:</label>
+              <input type="number" name="booking[tickets_attributes][${formIndex}][age]" id="booking_tickets_attributes_${formIndex}_age">
+            </div>
+            <div class="form-group">
+              <label>Gender:</label>
+              <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="male" id="booking_tickets_attributes_${formIndex}_gender_male">
+              <label for="booking_tickets_attributes_${formIndex}_gender_male">Male</label>
+              <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="female" id="booking_tickets_attributes_${formIndex}_gender_female">
+              <label for="booking_tickets_attributes_${formIndex}_gender_female">Female</label>
+            </div>
+          </div>
+        `;
+        formsContainer.appendChild(newForm);
+        formIndex++;
+    });
+  });
 </script>
-
+</body>
+</html>
