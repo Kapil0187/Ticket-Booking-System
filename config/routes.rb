@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'flights/index'
+  get 'trains/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "home#rootpage" 
@@ -7,6 +9,13 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
   get "bus" ,to:"home#index"
   get "show" ,to:"home#show"
+
+  get "train", to:"trains#index"
+  get "show_train", to:"trains#show_train"
+  
+  get "flight", to:"flights#index"
+  get "show_flight", to:"flights#show_flight"
+
   # get 'bookings/show_ticket', to:"bookings#show_ticket"
   resources :bookings 
   resources :tickets

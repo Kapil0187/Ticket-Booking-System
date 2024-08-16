@@ -1,0 +1,33 @@
+<%= render :partial => 'comman/nav'%>
+
+
+<% if @flights===nil %>
+	<h3>Oops! Flight route is not avaliable!</h3>
+<% else %>
+<table class="table container">
+	<thead>
+	  <tr>
+	    <th scope="col"> Number</th>
+	    <th scope="col">Flight Name</th>
+	    <th scope="col">Total Seets</th>
+	    <th scope="col">Departure Time</th>
+	    <th scope="col">Arrival Time</th>
+		<th scope="col">Ticket Price</th>
+	    <th scope="col">Flight Booking</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <% @flights.each do |flight| %>
+	    <tr>
+	       <td> <%= flight.id %> </td>
+	       <td> <%= flight.name %> </td>
+	       <td> <%= flight.total_seets %> </td>
+	       <td> <%= flight.departure_time.to_fs(:time) %> </td>
+	       <td> <%= flight.arrival_time.to_fs(:time) %> </td>
+		   <td> <%= flight.price %> </td>
+	       <td> <%= link_to "Book Ticket", new_booking_path(Flight_id:flight.id) %> </td>
+	    <tr>
+	  <% end %>
+	</tbody>
+<table>
+<% end %>

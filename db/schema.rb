@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_14_075131) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_16_065743) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date"
@@ -43,6 +43,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_075131) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "flights", force: :cascade do |t|
+    t.string "name"
+    t.string "total_seets"
+    t.datetime "departure_time"
+    t.datetime "arrival_time"
+    t.integer "price"
+    t.integer "direction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["direction_id"], name: "index_flights_on_direction_id"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.integer "seat_no"
     t.integer "booking_id", null: false
@@ -52,6 +64,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_075131) do
     t.string "gender"
     t.string "name"
     t.index ["booking_id"], name: "index_tickets_on_booking_id"
+  end
+
+  create_table "trains", force: :cascade do |t|
+    t.string "name"
+    t.string "total_seets"
+    t.datetime "departure_time"
+    t.datetime "arrival_time"
+    t.integer "price"
+    t.integer "direction_id", null: false
+    t.string "traintype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["direction_id"], name: "index_trains_on_direction_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,5 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_075131) do
   add_foreign_key "bookings", "buses"
   add_foreign_key "bookings", "users"
   add_foreign_key "buses", "directions"
+  add_foreign_key "flights", "directions"
   add_foreign_key "tickets", "bookings"
+  add_foreign_key "trains", "directions"
 end
