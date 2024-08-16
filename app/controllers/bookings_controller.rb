@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @ticket = Ticket.find_by(booking_id:params[:id])
   end
   
   def create

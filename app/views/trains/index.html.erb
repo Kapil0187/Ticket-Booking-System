@@ -1,0 +1,13 @@
+<%= render :partial => 'comman/nav' %>
+
+<div class="d-flex justify-content-center align-items-center" >
+  <div class="text-center" >
+    <h1> Search Your Trains </h1>
+    <%= form_with url: "/show_train", method: :get do |form| %>
+    <%= form.text_field :source , placeholder: "Enter your source" %>
+    <%= form.text_field :destination , placeholder: "Enter your destination" %>
+    <%= form.date_field :date %>
+    <%= form.submit "search" %>
+    <% end %>  
+  </div>
+</div>
