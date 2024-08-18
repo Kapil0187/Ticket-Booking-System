@@ -1,4 +1,4 @@
 class Bus < ApplicationRecord
   belongs_to :direction 
-  has_many :booking ,dependent: :destroy
+  has_many :bookings, as: :bookingable
 end
