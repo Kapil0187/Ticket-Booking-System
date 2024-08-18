@@ -12,7 +12,7 @@
 	    <th scope="col"> Departure Time </th>
 	    <th scope="col"> Arrival Time </th>
 	    <th scope="col"> Train Type </th>
-		<th scope="col"> Ticket Price </th>
+	    <th scope="col"> Ticket Price </th>
 	    <th scope="col"> Train Booking </th>
 	  </tr>
 	</thead>
@@ -25,7 +25,7 @@
 	       <td> <%= train.departure_time.to_fs(:time) %> </td>
 	       <td> <%= train.arrival_time.to_fs(:time) %> </td>
 	       <td> <%= train.traintype %> </td>
-		   <td> <%= train.price %> </td>
+	       <td> <%= train.price %> </td>
 	       <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train") %> </td>
 	    <tr>
 	  <% end %>
