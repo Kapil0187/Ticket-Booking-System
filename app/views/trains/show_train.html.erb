@@ -1,20 +1,19 @@
 <%= render :partial => 'comman/nav'%>
 
-
 <% if @trains===nil %>
-	<h3>Oops! Train route is not avaliable!</h3>
+	<h3> Oops! Train route is not avaliable! </h3>
 <% else %>
 <table class="table container">
 	<thead>
 	  <tr>
-	    <th scope="col">Train Number</th>
-	    <th scope="col">Train Name</th>
-	    <th scope="col">Total Seets</th>
-	    <th scope="col">Departure Time</th>
-	    <th scope="col">Arrival Time</th>
-	    <th scope="col">Train Type</th>
-		<th scope="col">Ticket Price</th>
-	    <th scope="col">Train Booking</th>
+	    <th scope="col"> Train Number </th>
+	    <th scope="col"> Train Name </th>
+	    <th scope="col"> Total Seets </th>
+	    <th scope="col"> Departure Time </th>
+	    <th scope="col"> Arrival Time </th>
+	    <th scope="col"> Train Type </th>
+		<th scope="col"> Ticket Price </th>
+	    <th scope="col"> Train Booking </th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -27,7 +26,7 @@
 	       <td> <%= train.arrival_time.to_fs(:time) %> </td>
 	       <td> <%= train.traintype %> </td>
 		   <td> <%= train.price %> </td>
-	       <td> <%= link_to "Book Ticket", new_booking_path(Train_id:train.id) %> </td>
+	       <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train") %> </td>
 	    <tr>
 	  <% end %>
 	</tbody>

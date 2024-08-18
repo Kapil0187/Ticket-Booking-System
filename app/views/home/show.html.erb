@@ -2,32 +2,30 @@
 
 
 <% if @buses===nil %>
-	<h3>Oops! Bus route is not avaliable!</h3>
+	<h3> Oops! Bus route is not avaliable! </h3>
 <% else %>
 <table class="table container">
 	<thead>
 	  <tr>
-	    <th scope="col">Bus Number</th>
-	    <th scope="col">Bus Name</th>
-	    <th scope="col">Total Seets</th>
-	    <th scope="col">Departure Time</th>
-	    <th scope="col">Arrival Time</th>
-	    <th scope="col">Bus Type</th>
-		<th scope="col">Ticket Price</th>
-	    <th scope="col">Bus Booking</th>
+	    <th scope="col"> Bus Number </th>
+	    <th scope="col"> Bus Name </th>
+	    <th scope="col"> Total Seets </th>
+	    <th scope="col"> Departure Time </th>
+	    <th scope="col"> Arrival Time </th>
+		<th scope="col"> Ticket Price </th>
+	    <th scope="col"> Bus Booking </th>
 	  </tr>
 	</thead>
 	<tbody>
 	  <% @buses.each do |bus| %>
 	    <tr>
-	       <td> <%= bus.id %> </td>
+		   <td> <%= bus.id %> </td>
 	       <td> <%= bus.name %> </td>
 	       <td> <%= bus.total_seets %> </td>
 	       <td> <%= bus.departure_time.to_fs(:time) %> </td>
 	       <td> <%= bus.arrival_time.to_fs(:time) %> </td>
-	       <td> <%= bus.bustype %> </td>
 		   <td> <%= bus.price %> </td>
-	       <td> <%= link_to "Book Ticket", new_booking_path(bus_id:bus.id) %> </td>
+	       <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: bus.id,bookingable_type: "Bus") %> </td>
 	    <tr>
 	  <% end %>
 	</tbody>
