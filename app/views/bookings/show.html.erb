@@ -2,8 +2,11 @@
     <p> Booking Id : <%= @booking.id %> </p>
     <p> Booking Date : <%= @booking.date %> </p>
     <p> Type : <%= @booking.mode_type %> </p>
-    <p> Ticket id : <%= @ticket.id %> </p>
-    <p> Name : <%= @ticket.name %> </p>
-    <p> Age : <%= @ticket.age %> </p>
-    <p> Gender : <%= @ticket.gender %> </p>
+
+    <% @tickets.each do |ticket| %>
+        <p> Ticket Id : <%= ticket.id %></p>
+        <p> Name : <%= ticket.name %> </p>
+        <p> Age : <%= ticket.age %> </p>
+        <p> Gender : <%= ticket.gender %> </p>
+    <% end %>
 </div>
