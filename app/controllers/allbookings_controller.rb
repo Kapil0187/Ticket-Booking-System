@@ -6,8 +6,8 @@ class AllbookingsController < ApplicationController
     @bookings = Booking.where(user_id:params[:user_id])
   end
 
-  def alltickets
-    @tickets
+  def showtickets
+    @tickets = Ticket.where(booking_id:params[:booking_id])
   end
 
 end
