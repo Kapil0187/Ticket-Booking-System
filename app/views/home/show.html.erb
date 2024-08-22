@@ -22,7 +22,11 @@
 	       <td> <%= bus.departure_time.to_fs(:time) %> </td>
 	       <td> <%= bus.arrival_time.to_fs(:time) %> </td>
 	       <td> <%= bus.price %> </td>
-	       <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: bus.id,bookingable_type: "Bus") %> </td>
+		   <% if bus.remaning_seats != nil %>
+	       	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: bus.id,bookingable_type: "Bus") %> </td>
+		   <% else %>
+		   	<td> Bus is Full</td>
+		   <% end %>
 	    <tr>
 	  <% end %>
 	</tbody>

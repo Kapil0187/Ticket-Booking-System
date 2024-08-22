@@ -65,10 +65,13 @@ class BookingsController < ApplicationController
     end
 
     tickets = @booking.tickets
+    bus = Bus.find(@booking.bookingable_id)
+    
     tickets.each do |ticket|
       last_seat += 1
       ticket.update_columns(seat_no: last_seat)
-
+      bus.update_columns(remaning_seats: bus.remaning_seats-1)
     end
+    
   end 
 end

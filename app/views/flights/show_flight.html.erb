@@ -22,7 +22,11 @@
 	       <td> <%= flight.departure_time.to_fs(:time) %> </td>
 	       <td> <%= flight.arrival_time.to_fs(:time) %> </td>
 	       <td> <%= flight.price %> </td>
-	       <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight") %> </td>
+	       <% if flight.remaning_seats != nil %>
+		   	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight") %> </td>
+		   <% else %>
+		   	<td> Flight is full</td>
+		   <% end %>
 	    <tr>
 	  <% end %>
 	</tbody>
