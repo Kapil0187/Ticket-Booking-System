@@ -1,0 +1,10 @@
+
+<% @data.each do |key,value| %>
+  <%= key %> : <%= value%><br>
+<% end %>
+<br>
+<% @tickets.each do |ticket| %>
+ Ticket Id : <%= ticket.id %><br>
+ Name : <%= ticket.name %><br>
+ Gender : <%= ticket.gender %> <br><br>
+<% end %>
