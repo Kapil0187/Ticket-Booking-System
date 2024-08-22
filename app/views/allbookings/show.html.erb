@@ -6,6 +6,7 @@
       <th scope="col">Date</th>
       <th scope="col">Type</th>
       <th scope="col">Tickets</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +16,43 @@
         <td> <%= booking.date %> </td>
         <td> <%= booking.mode_type %> </td>
         <td> <%= link_to "See Tickets", showtickets_path(booking_id:booking.id) %> </td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-<%= booking.id %>" >
+            see tickets
+          </button>
+          <!-- Modal -->
+            <div class="modal fade" id="modal-<%= booking.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">All Tickets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= booking.bookingable_type %> Name : <%= booking.bookingable.name %> <br>
+                      Departure Time : <%= booking.bookingable.departure_time.to_fs( :time ) %> <br>
+                      Arrival Time :  <%= booking.bookingable.arrival_time.to_fs( :time ) %> <br>
+                      Price : <%= booking.bookingable.price%><br>
+                      Source : <%= booking.bookingable.direction.source %><br>
+                      Destination : <%= booking.bookingable.direction.destination %><br>
+                      Distance : <%= booking.bookingable.direction.distance %><br><br>
+                    <% booking.tickets.each do |ticket| %>
+                      Ticket Id : <%= ticket.id %><br>
+                      Seat No : <%= ticket.seat_no %><br>
+                      Name : <%= ticket.name %><br>
+                      Gender : <%= ticket.gender %> <br><br>
+                    <% end %> 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+    
