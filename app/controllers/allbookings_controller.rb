@@ -49,8 +49,6 @@ class AllbookingsController < ApplicationController
     @data[ :Destination ] = direction.destination
     @data[ :Distance ] = direction.distance 
 
-    
-
   end
 
 end
