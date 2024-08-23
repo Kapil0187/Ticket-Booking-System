@@ -21,12 +21,6 @@ class BookingsController < ApplicationController
     redirect_to @booking
   end       
 
-  def destroy
-    @booking = Booking.find(params[:id])
-    @booking.destroy
-    redirect_to allbookings_path(user_id: current_user.id)
-  end
-
   private
   def booking_params
     params.require(:booking).permit(:user_id,:date,:mode_type,:bookingable_type,:bookingable_id,tickets_attributes:[:name,:age,:gender])
