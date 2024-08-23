@@ -27,12 +27,12 @@
                   </div>
                   <div class="modal-body">
                     <%= booking.bookingable_type %> Name : <%= booking.bookingable.name %> <br>
-                      Departure Time : <%= booking.bookingable.departure_time.to_fs( :time ) %> <br>
-                      Arrival Time :  <%= booking.bookingable.arrival_time.to_fs( :time ) %> <br>
-                      Price : <%= booking.bookingable.price%><br>
+                      Departure Time : <%= booking.bookingable.departure_time.to_fs( :time ) %> AM <br>
+                      Arrival Time :  <%= booking.bookingable.arrival_time.to_fs( :time ) %> PM <br>
+                      Price : <%= booking.bookingable.price%> Rs<br>
                       Source : <%= booking.bookingable.direction.source %><br>
                       Destination : <%= booking.bookingable.direction.destination %><br>
-                      Distance : <%= booking.bookingable.direction.distance %><br><br>
+                      Distance : <%= booking.bookingable.direction.distance %> Km<br><br>
                     <% booking.tickets.each do |ticket| %>
                       Ticket Id : <%= ticket.id %><br>
                       Seat No : <%= ticket.seat_no %><br>

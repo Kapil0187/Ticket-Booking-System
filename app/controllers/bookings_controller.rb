@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
       last_booking = Train.find(bookingable_id).bookings.last
       last_booking_id = last_booking == nil ? nil :last_booking.id
 
-    else
+    elsif(bookingable_type.eql?"Flight")
       last_booking = Flight.find(bookingable_id).bookings.last
       last_booking_id = last_booking == nil ? nil :last_booking.id
 
@@ -65,12 +65,25 @@ class BookingsController < ApplicationController
     end
 
     tickets = @booking.tickets
-    bus = Bus.find(@booking.bookingable_id)
     
+    if(@booking.bookingable_type.eql?"Bus")
+      bus = Bus.find(@booking.bookingable_id)
+    elsif(@booking.bookingable_type.eql?"Train")
+      train = Train.find(@booking.bookingable_id)
+    else
+      flight = Flight.find(@booking.bookingable_id)
+    end
+      
     tickets.each do |ticket|
       last_seat += 1
       ticket.update_columns(seat_no: last_seat)
-      bus.update_columns(remaning_seats: bus.remaning_seats-1)
+      if(@booking.bookingable_type.eql?"Bus")
+        bus.update_columns(remaning_seats: bus.remaning_seats-1)
+      elsif(@booking.bookingable_type.eql?"Train") 
+        train.update_columns(remaning_seats: train.remaning_seats-1)
+      else
+        flight.update_columns(remaning_seats: flight.remaning_seats-1)
+      end
     end
     
   end 
