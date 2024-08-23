@@ -6,6 +6,7 @@
       <th scope="col"> Date </th>
       <th scope="col"> Type </th>
       <th scope="col"> Tickets </th>
+      <th scope="col"> Cancel Bookings</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,7 @@
                       Seat No : <%= ticket.seat_no %><br>
                       Name : <%= ticket.name %><br>
                       Gender : <%= ticket.gender %> 
+                      <%= button_to "Cancel Ticket",""%>
                       <br><br>
                     <% end %> 
                   </div>
@@ -48,6 +50,7 @@
               </div>
             </div>
         </td>
+        <td><%= button_to "Cancle Booking", booking_path(booking) ,method: :delete%></th>
       </tr>
     <% end %>
   </tbody>
