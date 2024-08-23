@@ -15,12 +15,10 @@
         <th scope="row"> <%= booking.id %> </th>
         <td> <%= booking.date %> </td>
         <td> <%= booking.mode_type %> </td>
-        <td> <%= link_to "See Tickets", showtickets_path(booking_id:booking.id) %> </td>
         <td>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-<%= booking.id %>" >
             see tickets
           </button>
-          <!-- Modal -->
             <div class="modal fade" id="modal-<%= booking.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -40,7 +38,8 @@
                       Ticket Id : <%= ticket.id %><br>
                       Seat No : <%= ticket.seat_no %><br>
                       Name : <%= ticket.name %><br>
-                      Gender : <%= ticket.gender %> <br><br>
+                      Gender : <%= ticket.gender %> 
+                      <br><br>
                     <% end %> 
                   </div>
                   <div class="modal-footer">

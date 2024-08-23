@@ -28,7 +28,7 @@
 		   <% if train.remaning_seats != nil %>
 	       	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train") %> </td>
 		   <% else %>
-		    <td> Train is Full</td>
+		    <td> Train is Full </td>
 		   <% end %>
 	    <tr>
 	  <% end %>
