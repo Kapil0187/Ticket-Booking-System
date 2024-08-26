@@ -2,9 +2,9 @@
   <div class="text-center" >
     <h1> Search Your Trains </h1>
     <%= form_with url: "/show_train", method: :get do |form| %>
-    <%= form.text_field :source , placeholder: "Enter your source" %>
-    <%= form.text_field :destination , placeholder: "Enter your destination" %>
-    <%= form.date_field :date %>
+    <%= form.text_field :source , placeholder: "Enter your source" ,required: true%>
+    <%= form.text_field :destination , placeholder: "Enter your destination" ,required: true%>
+    <%= form.date_field :date ,required: true%>
     <%= form.submit "search" %>
     <% end %>  
   </div>
