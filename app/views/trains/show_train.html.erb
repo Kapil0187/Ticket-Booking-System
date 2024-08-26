@@ -7,7 +7,8 @@
 	  <tr>
 	    <th scope="col"> Train Number </th>
 	    <th scope="col"> Train Name </th>
-	    <th scope="col"> Total Seets </th>
+	    <th scope="col"> Total Seats </th>
+		<th scope='col'> Remaning Seats </th>
 	    <th scope="col"> Departure Time </th>
 	    <th scope="col"> Arrival Time </th>
 	    <th scope="col"> Train Type </th>
@@ -21,6 +22,7 @@
 	       <td> <%= train.id %> </td>
 	       <td> <%= train.name %> </td>
 	       <td> <%= train.total_seets %> </td>
+		   <td> <%= train.remaning_seats %></td>
 	       <td> <%= train.departure_time.to_fs(:time) %> </td>
 	       <td> <%= train.arrival_time.to_fs(:time) %> </td>
 	       <td> <%= train.traintype %> </td>
@@ -28,7 +30,7 @@
 		   <% if train.remaning_seats != nil %>
 	       	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train") %> </td>
 		   <% else %>
-		    <td> Train is Full</td>
+		    <td> Train is Full </td>
 		   <% end %>
 	    <tr>
 	  <% end %>

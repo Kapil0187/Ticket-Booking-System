@@ -2,11 +2,11 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Booking id</th>
-      <th scope="col">Date</th>
-      <th scope="col">Type</th>
-      <th scope="col">Tickets</th>
-      <th scope="col"></th>
+      <th scope="col"> Booking id </th>
+      <th scope="col"> Date </th>
+      <th scope="col"> Type </th>
+      <th scope="col"> Tickets </th>
+      <th scope="col"> Cancel Bookings</th>
     </tr>
   </thead>
   <tbody>
@@ -15,12 +15,10 @@
         <th scope="row"> <%= booking.id %> </th>
         <td> <%= booking.date %> </td>
         <td> <%= booking.mode_type %> </td>
-        <td> <%= link_to "See Tickets", showtickets_path(booking_id:booking.id) %> </td>
         <td>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-<%= booking.id %>" >
             see tickets
           </button>
-          <!-- Modal -->
             <div class="modal fade" id="modal-<%= booking.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -30,17 +28,19 @@
                   </div>
                   <div class="modal-body">
                     <%= booking.bookingable_type %> Name : <%= booking.bookingable.name %> <br>
-                      Departure Time : <%= booking.bookingable.departure_time.to_fs( :time ) %> <br>
-                      Arrival Time :  <%= booking.bookingable.arrival_time.to_fs( :time ) %> <br>
-                      Price : <%= booking.bookingable.price%><br>
+                      Departure Time : <%= booking.bookingable.departure_time.to_fs( :time ) %> AM <br>
+                      Arrival Time :  <%= booking.bookingable.arrival_time.to_fs( :time ) %> PM <br>
+                      Price : <%= booking.bookingable.price%> Rs<br>
                       Source : <%= booking.bookingable.direction.source %><br>
                       Destination : <%= booking.bookingable.direction.destination %><br>
-                      Distance : <%= booking.bookingable.direction.distance %><br><br>
+                      Distance : <%= booking.bookingable.direction.distance %> Km<br><br>
                     <% booking.tickets.each do |ticket| %>
                       Ticket Id : <%= ticket.id %><br>
                       Seat No : <%= ticket.seat_no %><br>
                       Name : <%= ticket.name %><br>
-                      Gender : <%= ticket.gender %> <br><br>
+                      Gender : <%= ticket.gender %> 
+                      <%= button_to "Cancel Ticket",""%>
+                      <br><br>
                     <% end %> 
                   </div>
                   <div class="modal-footer">
@@ -50,6 +50,7 @@
               </div>
             </div>
         </td>
+        <td><%= button_to "Cancle Booking", booking_path(booking) ,method: :delete%></th>
       </tr>
     <% end %>
   </tbody>

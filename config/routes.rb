@@ -17,11 +17,10 @@ Rails.application.routes.draw do
   get "show_flight", to:"flights#show_flight"
 
   get "allbookings", to:"allbookings#show"
-  get "showtickets", to:"allbookings#showtickets"
 
   # get 'bookings/show_ticket', to:"bookings#show_ticket"
   resources :bookings 
-  resources :tickets
+
   
   # Defines the root path route ("/")
   # root "posts#index"
