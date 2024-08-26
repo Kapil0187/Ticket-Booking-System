@@ -20,7 +20,7 @@
 <body>
 <%= form_with model: @booking, url: bookings_path, method: :post, local: true do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :date, value: Date.today %>
+  <%= form.hidden_field :date, value: params[:date]%>
   <%= form.hidden_field :mode_type, value: params[:bookingable_type] %>
   <%= form.hidden_field :bookingable_type, value: params[:bookingable_type] %>
   <%= form.hidden_field :bookingable_id, value: params[:bookingable_id] %>

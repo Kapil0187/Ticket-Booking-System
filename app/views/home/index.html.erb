@@ -1,13 +1,22 @@
-<div class="d-flex justify-content-center align-items-center" style="margin-top:100px;" >
-  <div class="text-center" >
-    <h1> Search Your Buses </h1>
-    <%= form_with url: "/show", method: :get do |form| %>
-    <%= form.text_field :source , placeholder: "Enter your source" %>
-    <%= form.text_field :destination , placeholder: "Enter your destination" %>
-    <%= form.date_field :date %>
-    <%= form.submit "search" %>
-    <% end %>  
-  </div>
-</div>
+<html>
+  <head>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center main-container" style="margin-top:100px;" >
+      <div class="text-center" >
+        <h1> Search Your Buses </h1>
+        <%= form_with url: "/show", method: :get do |form| %>
+        <%= form.text_field :source , placeholder: "Enter your source" %>
+        <%= form.text_field :destination , placeholder: "Enter your destination" %>
+        <%= form.date_field :date %>
+        <%= form.submit "search" %>
+        <% end %>  
+      </div>
+    </div>
+  </body>
+</html>
 
 

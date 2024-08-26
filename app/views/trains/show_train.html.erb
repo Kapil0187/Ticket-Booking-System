@@ -28,7 +28,7 @@
 	       <td> <%= train.traintype %> </td>
 	       <td> <%= train.price %> </td>
 		   <% if train.remaning_seats != nil %>
-	       	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train") %> </td>
+	       	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train", date: params[:date]) %> </td>
 		   <% else %>
 		    <td> Train is Full </td>
 		   <% end %>
