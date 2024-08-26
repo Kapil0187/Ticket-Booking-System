@@ -1,14 +1,14 @@
 <html>
-	<head>
-		<style>
-			.not-found{
-				margin-top:100px;
-				margin-left:300px;
-			}
-		</style>
-	</head>
-	<body>
-		<%if @bookings.length === 0%>
+  <head>
+   <style>
+     .not-found{
+	margin-top:100px;
+	margin-left:300px;
+      }
+    </style>
+  </head>
+  <body>
+    <%if @bookings.length === 0%>
       <h1 class='not-found'>Please First Book your Joruny! </h1>
     <% else %>
     <table class="table table-bordered">
@@ -67,7 +67,7 @@
       </tbody>
     </table>
     <% end %>
-	</body>
+  </body>
 </html>
 
  
