@@ -1,11 +1,10 @@
 <html>
   <head>
-    <style>
-      
-    </style>
+    
   </head>
   <body>
-    <div class="d-flex justify-content-center align-items-center main-container" style="margin-top:100px;" >
+    <div class="main-container">
+      <div class="d-flex justify-content-center align-items-center" style="padding-top:100px;">
       <div class="text-center" >
         <h1> Search Your Buses </h1>
         <%= form_with url: "/show", method: :get do |form| %>
@@ -15,6 +14,7 @@
         <%= form.submit "search" %>
         <% end %>  
       </div>
+    </div>
     </div>
   </body>
 </html>
