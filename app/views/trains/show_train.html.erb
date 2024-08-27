@@ -1,39 +1,53 @@
 
-<% if @trains===nil %>
-	<h3> Oops! Train route is not avaliable! </h3>
-<% else %>
-<table class="table container">
-	<thead>
-	  <tr>
-	    <th scope="col"> Train Number </th>
-	    <th scope="col"> Train Name </th>
-	    <th scope="col"> Total Seats </th>
-		<th scope='col'> Remaning Seats </th>
-	    <th scope="col"> Departure Time </th>
-	    <th scope="col"> Arrival Time </th>
-	    <th scope="col"> Train Type </th>
-	    <th scope="col"> Ticket Price </th>
-	    <th scope="col"> Train Booking </th>
-	  </tr>
-	</thead>
-	<tbody>
-	  <% @trains.each do |train| %>
-	    <tr>
-	       <td> <%= train.id %> </td>
-	       <td> <%= train.name %> </td>
-	       <td> <%= train.total_seets %> </td>
-		   <td> <%= train.remaning_seats %></td>
-	       <td> <%= train.departure_time.to_fs(:time) %> </td>
-	       <td> <%= train.arrival_time.to_fs(:time) %> </td>
-	       <td> <%= train.traintype %> </td>
-	       <td> <%= train.price %> </td>
-		   <% if train.remaning_seats != nil %>
-	       	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train") %> </td>
-		   <% else %>
-		    <td> Train is Full </td>
-		   <% end %>
-	    <tr>
-	  <% end %>
-	</tbody>
-<table>
-<% end %>
+<html>
+   <head>
+      <style>
+	 .not-found{
+		margin-top:100px;
+		margin-left:300px;
+	  }
+      </style>
+   </head>
+   <body>
+		<% if @trains.length === 0 %>
+			<h3 class='not-found'> Oops! Train route is not avaliable! </h3>
+		<% else %>
+		<table class="table container">
+			<thead>
+	  		<tr>
+	    		<th scope="col"> Train Number </th>
+	    		<th scope="col"> Train Name </th>
+	    		<th scope="col"> Total Seats </th>
+				<th scope='col'> Remaning Seats </th>
+	    		<th scope="col"> Departure Time </th>
+	    		<th scope="col"> Arrival Time </th>
+	    		<th scope="col"> Train Type </th>
+	    		<th scope="col"> Ticket Price </th>
+	    		<th scope="col"> Train Booking </th>
+	  		</tr>
+			</thead>
+			<tbody>
+	  		<% @trains.each do |train| %>
+	    		<tr>
+	       		<td> <%= train.id %> </td>
+	       		<td> <%= train.name %> </td>
+	       		<td> <%= train.total_seets %> </td>
+		   		<td> <%= train.remaning_seats %></td>
+	       		<td> <%= train.departure_time.to_fs(:time) %> </td>
+	       		<td> <%= train.arrival_time.to_fs(:time) %> </td>
+	       		<td> <%= train.traintype %> </td>
+	       		<td> <%= train.price %> </td>
+		   		<% if train.remaning_seats != nil %>
+	       			<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train", date: params[:date]) %> </td>
+		   		<% else %>
+		    		<td> Train is Full </td>
+		   		<% end %>
+	    		<tr>
+	  		<% end %>
+			</tbody>
+		<table>
+		<% end %>
+	</body>
+</html>
+
+

@@ -1,29 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-     <%= link_to "Ticket Booking" , root_path %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<html>
+  <head>
+    <style>
+      .logo{
+        color:black;
+        font-family: "Times New Roman", Times, serif;
+        margin-left:10px; 
+        font-weight: bold;
+        font-size: 25px;
+        text-decoration:none
+      },
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to "Ticket Booking", root_path ,class:"logo" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="d-flex justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
-    <div class='d-flex w-50 justify-content-around'>
+    <div class="d-flex justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+      <div class='d-flex w-50 justify-content-around'>
         <div>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <%= link_to "Bus", bus_path %>
+              <%= link_to "Bus", bus_path, class:"nav-link" %>
             </li>
           </ul>
         </div>
          <div>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <%= link_to "Train", trains_index_path %>
+              <%= link_to "Train", trains_index_path ,class:"nav-link" %>
             </li>
           </ul>
         </div>
         <div>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <%= link_to "Flight", flights_index_path %>
+              <%= link_to "Flight", flights_index_path, class:"nav-link" %>
             </li>
           </ul>
         </div>
@@ -31,7 +46,7 @@
           <div>
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <%= link_to "Your Bookings", allbookings_path(user_id:current_user.id) %>
+                <%= link_to "Your Bookings", allbookings_path(user_id:current_user.id) ,class:"nav-link"%>
               </li>
             </ul>
           </div>
@@ -46,6 +61,8 @@
       <% end %>
     </div>
     </form>
-  </div>
-</nav>
+    </div>
+    </nav>
+  </body>
+</html>
 

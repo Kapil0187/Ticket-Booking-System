@@ -4,12 +4,13 @@
   <title>Dynamic Forms</title>
 </head>
 <style>
+    
     .form-container{
-        margin: 20px 10px;
+      margin-top:100px;
     }
 
     .form-group{
-        margin: 8px 2px;
+      margin: 8px 2px;
     }
 
     .ticket-fields-container {
@@ -19,7 +20,7 @@
 <body>
 <%= form_with model: @booking, url: bookings_path, method: :post, local: true do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :date, value: Date.today %>
+  <%= form.hidden_field :date, value: params[:date]%>
   <%= form.hidden_field :mode_type, value: params[:bookingable_type] %>
   <%= form.hidden_field :bookingable_type, value: params[:bookingable_type] %>
   <%= form.hidden_field :bookingable_id, value: params[:bookingable_id] %>
@@ -27,11 +28,15 @@
   <%= form.fields_for :tickets do |f| %>
   <%= render 'ticket_fields', f: f %>
   <% end %>
-  <div id="forms-container">
-    
+  <div class='main-container'>
+    <div id="forms-container">
+     
+    </div>
+    <div>
+      <button type="button" id="add-form-btn"> Add Traveller </button>
+      <%= form.submit 'Book Tickets' %>
+    </div>
   </div>
-  <button type="button" id="add-form-btn"> Add Traveller </button>
-  <%= form.submit 'Book Tickets' %>
 <% end %>
 
 <script>
@@ -62,6 +67,7 @@
               <label for="booking_tickets_attributes_${formIndex}_gender_female">Female</label>
             </div>
           </div>
+        </div>
         `;
         formsContainer.appendChild(newForm);
         formIndex++;

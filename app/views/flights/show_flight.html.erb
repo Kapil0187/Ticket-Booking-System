@@ -1,36 +1,48 @@
-<% if @flights===nil %>
-	<h3> Oops! Flight route is not avaliable! </h3>
-<% else %>
-<table class="table container">
-	<thead>
-	  <tr>
-	    <th scope="col"> Number </th>
-	    <th scope="col"> Flight Name </th>
-	    <th scope="col"> Total Seats </th>
-		<th scope="col"> Remaning Seats</th>
-	    <th scope="col"> Departure Time </th>
-	    <th scope="col"> Arrival Time </th>
-	    <th scope="col"> Ticket Price </th>
-	    <th scope="col"> Flight Booking </th>
-	  </tr>
-	</thead>
-	<tbody>
-	  <% @flights.each do |flight| %>
-	    <tr>
-	       <td> <%= flight.id %> </td>
-	       <td> <%= flight.name %> </td>
-	       <td> <%= flight.total_seets %> </td>
-		   <td> <%= flight.remaning_seats %></td>
-	       <td> <%= flight.departure_time.to_fs(:time) %> </td>
-	       <td> <%= flight.arrival_time.to_fs(:time) %> </td>
-	       <td> <%= flight.price %> </td>
-	       <% if flight.remaning_seats != nil %>
-		   	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight") %> </td>
-		   <% else %>
-		   	<td> Flight is full </td>
-		   <% end %>
-	    <tr>
-	  <% end %>
-	</tbody>
-<table>
-<% end %>
+<html>
+  <head>
+    <style>
+       .not-found{
+	  margin-top:100px;
+	  margin-left:300px;
+	}
+    </style>
+  </head>
+  <body>
+		<% if @flights.length === 0 %>
+			<h3 class='not-found'> Oops! Flight route is not avaliable! </h3>
+		<% else %>
+		<table class="table container">
+			<thead>
+	  		<tr>
+	    		<th scope="col"> Number </th>
+	    		<th scope="col"> Flight Name </th>
+	    		<th scope="col"> Total Seats </th>
+				<th scope="col"> Remaning Seats</th>
+	    		<th scope="col"> Departure Time </th>
+	    		<th scope="col"> Arrival Time </th>
+	    		<th scope="col"> Ticket Price </th>
+	    		<th scope="col"> Flight Booking </th>
+	  		</tr>
+			</thead>
+			<tbody>
+	  		<% @flights.each do |flight| %>
+	    		<tr>
+	       		<td> <%= flight.id %> </td>
+	       		<td> <%= flight.name %> </td>
+	       		<td> <%= flight.total_seets %> </td>
+		   		<td> <%= flight.remaning_seats %></td>
+	       		<td> <%= flight.departure_time.to_fs(:time) %> </td>
+	       		<td> <%= flight.arrival_time.to_fs(:time) %> </td>
+	       		<td> <%= flight.price %> </td>
+	       		<% if flight.remaning_seats != nil %>
+		   			<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight",date: params[:date]) %> </td>
+		   		<% else %>
+		   			<td> Flight is full </td>
+		   		<% end %>
+	    		<tr>
+	  		<% end %>
+			</tbody>
+		<table>
+		<% end %>
+	</body>
+</html>
