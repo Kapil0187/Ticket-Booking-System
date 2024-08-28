@@ -1,12 +1,48 @@
-<div>
-    <p> Booking Id : <%= @booking.id %> </p>
-    <p> Booking Date : <%= @booking.date %> </p>
-    <p> Type : <%= @booking.mode_type %> </p>
+<html>
+    <head>
+        <style>
+            .main-container{
+                padding-top : 20px;
+            }
+            
+            .heading{
+                padding-left: 20px;
+            }
 
-    <% @tickets.each do |ticket| %>
-        <p> Ticket Id : <%= ticket.id %></p>
-        <p> Name : <%= ticket.name %> </p>
-        <p> Age : <%= ticket.age %> </p>
-        <p> Gender : <%= ticket.gender %> </p>
-    <% end %>
-</div>
+            .tickets{
+                display:flex;
+                flex-direction: col;
+                flex-wrap:wrap;
+            },
+            .cards{
+                margin:20px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class='main-container'>
+            <div class="heading">
+                <p> Booking Id : <%= @booking.id %> </p>
+                <p> Booking Date : <%= @booking.date %> </p>
+                <p> Type : <%= @booking.mode_type %> </p>
+            </div>
+            <div class='tickets'>
+                <% @tickets.each do |ticket,i=1| %>
+                <div class="card" style="width: 18rem; margin:20px">
+                    <div class="card-header">
+                        Ticket <%= i %>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ticket Id : <%= ticket.id %></li>
+                        <li class="list-group-item">Name : <%= ticket.name %> </li>
+                        <li class="list-group-item">Age : <%= ticket.age %> </li>
+                        <li class="list-group-item"> Gender : <%= ticket.gender %> </li>
+                    </ul>
+                </div>
+                <% i += 1%>
+                <% end %>
+            </div>
+        </div>
+    </body>
+</html>
