@@ -4,18 +4,24 @@
   <title>Dynamic Forms</title>
 </head>
 <style>
-    
-    .form-container{
-      margin-top:100px;
-    }
+  .main-container{
+    padding:20px 20px 20px 40px;
+  }
+  
+  .form-container{
+    display:flex;
+    flex-direction:col;
+    padding: 0px 0px 20px 0px;
+  },
 
-    .form-group{
-      margin: 8px 2px;
-    }
+  .form-group{
+   
+  },
 
-    .ticket-fields-container {
-        margin-bottom: 20px;
-    }
+  .ticket-fields-container {
+    margin-bottom: 20px;
+  }
+
 </style>
 <body>
 <%= form_with model: @booking, url: bookings_path, method: :post, local: true do |form| %>
@@ -24,55 +30,72 @@
   <%= form.hidden_field :mode_type, value: params[:bookingable_type] %>
   <%= form.hidden_field :bookingable_type, value: params[:bookingable_type] %>
   <%= form.hidden_field :bookingable_id, value: params[:bookingable_id] %>
-   
-  <%= form.fields_for :tickets do |f| %>
-  <%= render 'ticket_fields', f: f %>
-  <% end %>
   <div class='main-container'>
-    <div id="forms-container">
+    <%= form.fields_for :tickets do |f| %> 
+      <div class="form-container">
+        <div class="form-group">
+          <%= f.label :name %> : 
+          <%= f.text_field :name ,required: true%>
+        </div>
+        <div class="form-group">
+          <%= f.label :age %> : 
+          <%= f.number_field :age, required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :gender %> : 
+          <%= f.radio_button :gender, 'male' ,required: true%>
+          <%= f.label :gender_male, 'Male' %>
+          <%= f.radio_button :gender, 'female' ,required: true %>
+          <%= f.label :gender_female, 'Female' %> 
+        </div>
+      </div>
+    <% end %>
+      <div id="forms-container">
      
-    </div>
-    <div>
-      <button type="button" id="add-form-btn"> Add Traveller </button>
-      <%= form.submit 'Book Tickets' %>
-    </div>
+      </div>
+      <div>
+        <button type="button" id="add-form-btn"> Add Traveller </button>
+        <%= form.submit 'Book Tickets' %>
+      </div>
+   
   </div>
 <% end %>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('turbo:load', () => {
+    
     const addFormButton = document.getElementById('add-form-btn');
     const formsContainer = document.getElementById('forms-container');
     let formIndex = <%= @booking.tickets.size %>; 
-
+     
     addFormButton.addEventListener('click', () => {
+      
       const newForm = document.createElement('div');
         newForm.className = 'ticket-fields-container';
 
         newForm.innerHTML = `
           <div class="form-container">
             <div class="form-group">
-              <label for="booking_tickets_attributes_${formIndex}_name">Name:</label>
+              <label for="booking_tickets_attributes_${formIndex}_name"> Name : </label>
               <input type="text" name="booking[tickets_attributes][${formIndex}][name]" id="booking_tickets_attributes_${formIndex}_name">
             </div>
             <div class="form-group">
-              <label for="booking_tickets_attributes_${formIndex}_age">Age:</label>
+              <label for="booking_tickets_attributes_${formIndex}_age"> Age : </label>
               <input type="number" name="booking[tickets_attributes][${formIndex}][age]" id="booking_tickets_attributes_${formIndex}_age">
             </div>
             <div class="form-group">
-              <label>Gender:</label>
+              <label> Gender : </label>
               <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="male" id="booking_tickets_attributes_${formIndex}_gender_male">
               <label for="booking_tickets_attributes_${formIndex}_gender_male">Male</label>
               <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="female" id="booking_tickets_attributes_${formIndex}_gender_female">
               <label for="booking_tickets_attributes_${formIndex}_gender_female">Female</label>
             </div>
           </div>
-        </div>
         `;
         formsContainer.appendChild(newForm);
         formIndex++;
     });
-  });
+  }); 
 </script>
 </body>
 </html>

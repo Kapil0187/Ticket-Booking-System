@@ -1,14 +1,14 @@
 <html>
    <head>
       <style>
-	 .not-found{
-	      margin-top:100px;
+	 	.not-found{
+	      padding-top:100px;
 	      margin-left:300px;
-	  }
+	  	}
       </style>
    </head>
    <body>
-		<% if @buses.length === 0 %>
+		<% if @buses.length === 0 || params[:date].to_date< Date.today() %>
 			<h3 class='not-found'> Oops! Bus route is not avaliable! </h3>
 		<% else %>
 		<table class="table container">
