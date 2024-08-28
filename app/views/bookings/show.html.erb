@@ -28,10 +28,10 @@
                 <p> Type : <%= @booking.mode_type %> </p>
             </div>
             <div class='tickets'>
-                <% @tickets.each do |ticket,i=1| %>
+                <% @tickets.each do |ticket| %>
                 <div class="card" style="width: 18rem; margin:20px">
                     <div class="card-header">
-                        Ticket <%= i %>
+                        Ticket
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Ticket Id : <%= ticket.id %></li>
@@ -40,7 +40,6 @@
                         <li class="list-group-item"> Gender : <%= ticket.gender %> </li>
                     </ul>
                 </div>
-                <% i += 1%>
                 <% end %>
             </div>
         </div>

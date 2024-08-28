@@ -5,7 +5,6 @@
 	      padding-top:100px;
 	      margin-left:300px;
       }
-      .b
     </style>
   </head>
   <body>
@@ -65,6 +64,8 @@
             <td>
               <% if booking.date >= Date.today() %>
                 <%= button_to "Cancel Booking", booking_path(booking) ,method: :delete, data: {turbo_confirm: "Are you sure?"}, class:'btn btn-danger'%>
+              <% else %>
+                <button class='btn btn-danger'> Can't cancel </button>
               <% end %>
             </td>
           </tr>
