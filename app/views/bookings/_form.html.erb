@@ -1,25 +1,43 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Dynamic Forms</title>
 </head>
 <style>
-  .main-container{
-    padding:20px 20px 20px 40px;
+  .main-container {
+    padding: 20px 20px 20px 40px;
   }
   
-  .form-container{
+  .form-container {
     display:flex;
     flex-direction:col;
     padding: 0px 0px 20px 0px;
-  },
+  }
 
-  .form-group{
-   
-  },
+  .form-group {
+    margin-left: 20px;
+  }
 
   .ticket-fields-container {
     margin-bottom: 20px;
+    position: relative; 
+  }
+
+  .remove-form-btn {
+    position: absolute;
+    right: 0;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius:10px;
+    margin-top :-8px;
+  }
+
+  .remove-form-btn:hover {
+    background-color: #d32f2f; 
   }
 
 </style>
@@ -35,7 +53,7 @@
       <div class="form-container">
         <div class="form-group">
           <%= f.label :name %> : 
-          <%= f.text_field :name ,required: true%>
+          <%= f.text_field :name, required: true %>
         </div>
         <div class="form-group">
           <%= f.label :age %> : 
@@ -43,59 +61,64 @@
         </div>
         <div class="form-group">
           <%= f.label :gender %> : 
-          <%= f.radio_button :gender, 'male' ,required: true%>
+          <%= f.radio_button :gender, 'male', required: true %>
           <%= f.label :gender_male, 'Male' %>
-          <%= f.radio_button :gender, 'female' ,required: true %>
+          <%= f.radio_button :gender, 'female', required: true %>
           <%= f.label :gender_female, 'Female' %> 
         </div>
       </div>
     <% end %>
-      <div id="forms-container">
-     
-      </div>
-      <div>
-        <button type="button" id="add-form-btn"> Add Traveller </button>
-        <%= form.submit 'Book Tickets' %>
-      </div>
-   
+    <div id="forms-container">
+    </div>
+    <div>
+      <button type="button" id="add-form-btn"> Add Traveller </button>
+      <%= form.submit 'Book Tickets' %>
+    </div>
   </div>
 <% end %>
 
 <script>
-   document.addEventListener('turbo:load', () => {
-    
+  document.addEventListener('turbo:load', () => {
     const addFormButton = document.getElementById('add-form-btn');
     const formsContainer = document.getElementById('forms-container');
     let formIndex = <%= @booking.tickets.size %>; 
-     
+    
     addFormButton.addEventListener('click', () => {
-      
       const newForm = document.createElement('div');
-        newForm.className = 'ticket-fields-container';
+      newForm.className = 'ticket-fields-container';
 
-        newForm.innerHTML = `
-          <div class="form-container">
-            <div class="form-group">
-              <label for="booking_tickets_attributes_${formIndex}_name"> Name : </label>
-              <input type="text" name="booking[tickets_attributes][${formIndex}][name]" id="booking_tickets_attributes_${formIndex}_name">
-            </div>
-            <div class="form-group">
-              <label for="booking_tickets_attributes_${formIndex}_age"> Age : </label>
-              <input type="number" name="booking[tickets_attributes][${formIndex}][age]" id="booking_tickets_attributes_${formIndex}_age">
-            </div>
-            <div class="form-group">
-              <label> Gender : </label>
-              <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="male" id="booking_tickets_attributes_${formIndex}_gender_male">
-              <label for="booking_tickets_attributes_${formIndex}_gender_male">Male</label>
-              <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="female" id="booking_tickets_attributes_${formIndex}_gender_female">
-              <label for="booking_tickets_attributes_${formIndex}_gender_female">Female</label>
-            </div>
+      newForm.innerHTML = `
+        <div class="form-container">
+          <div class="form-group">
+            <label for="booking_tickets_attributes_${formIndex}_name"> Name : </label>
+            <input type="text" name="booking[tickets_attributes][${formIndex}][name]" id="booking_tickets_attributes_${formIndex}_name">
           </div>
-        `;
-        formsContainer.appendChild(newForm);
-        formIndex++;
+          <div class="form-group">
+            <label for="booking_tickets_attributes_${formIndex}_age"> Age : </label>
+            <input type="number" name="booking[tickets_attributes][${formIndex}][age]" id="booking_tickets_attributes_${formIndex}_age">
+          </div>
+          <div class="form-group">
+            <label> Gender : </label>
+            <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="male" id="booking_tickets_attributes_${formIndex}_gender_male">
+            <label for="booking_tickets_attributes_${formIndex}_gender_male">Male</label>
+            <input type="radio" name="booking[tickets_attributes][${formIndex}][gender]" value="female" id="booking_tickets_attributes_${formIndex}_gender_female">
+            <label for="booking_tickets_attributes_${formIndex}_gender_female">Female</label>
+          </div>
+          <button type="button" class="remove-form-btn">Remove</button>
+        </div>
+      `;
+
+      formsContainer.appendChild(newForm);
+      formIndex++;
     });
-  }); 
+
+    formsContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('remove-form-btn')) {
+        event.target.parentElement.remove();
+      }
+    });
+
+  });
 </script>
 </body>
 </html>
