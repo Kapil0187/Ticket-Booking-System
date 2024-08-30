@@ -26,6 +26,9 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    
+    manage_cancel_tickets
+
     @booking.destroy
     redirect_to allbookings_path(user_id: current_user.id)
   end
@@ -61,7 +64,6 @@ class BookingsController < ApplicationController
     else
       last_seat_no = Booking.find(last_booking_id).tickets.last.seat_no
       return last_seat_no
-
     end
     
   end
@@ -70,30 +72,45 @@ class BookingsController < ApplicationController
 
     if(last_seat==nil)
       last_seat = 0
-
     end
 
     tickets = @booking.tickets
-    
-    if(@booking.bookingable_type.eql?"Bus")
-      bus = Bus.find(@booking.bookingable_id)
-    elsif(@booking.bookingable_type.eql?"Train")
-      train = Train.find(@booking.bookingable_id)
-    else
-      flight = Flight.find(@booking.bookingable_id)
-    end
       
     tickets.each do |ticket|
       last_seat += 1
       ticket.update_columns(seat_no: last_seat)
       if(@booking.bookingable_type.eql?"Bus")
+        bus = Bus.find(@booking.bookingable_id)
         bus.update_columns(remaning_seats: bus.remaning_seats-1)
-      elsif(@booking.bookingable_type.eql?"Train") 
+
+      elsif(@booking.bookingable_type.eql?"Train")
+        train = Train.find(@booking.bookingable_id)
         train.update_columns(remaning_seats: train.remaning_seats-1)
+
       else
+        flight = Flight.find(@booking.bookingable_id)
         flight.update_columns(remaning_seats: flight.remaning_seats-1)
+
       end
     end
-    
   end 
+
+  def manage_cancel_tickets
+    ticket_count = @booking.tickets.count
+
+    if(@bookingable_type.eql? "Bus")
+      bus = Bus.find_by(id: @booking.bookingable_id)
+      bus.update_columns(remaning_seats: bus.remaning_seats+ticket_count)
+
+    elsif(@booking.bookingable_type.eql?"Train")
+      train = Train.find_by(id: @booking.bookingable_id)
+      train.update_columns(remaning_seats: train.remaning_seats+ticket_count)
+
+    else 
+      flight = Flight.find_by(id: @booking.bookingable_id)
+      flight.update_columns(remaning_seats: flight.remaning_seats+ticket_count)
+
+    end
+  end
+  
 end
