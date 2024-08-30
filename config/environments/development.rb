@@ -84,16 +84,16 @@ Rails.application.configure do
   # config.action_mailer.default_options = {host: 'localhost:3000', protocol: 'http'}
 
   config.action_mailer.delivery_method = :smtp
+  
   config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'example.com',
-  user_name:            ENV['EMAIL_USERNAME'],  # Use environment variable
-  password:             ENV['EMAIL_PASSWORD'],  # Use App Password from Gmail
+  user_name:            'kbarsker@bestpeers.com',  # Use environment variable
+  password:             'rdvv zhrq zzsu lzvq',  # Use App Password from Gmail
   authentication:       'plain',
   enable_starttls_auto: true
 }
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-config.action_mailer.delivery_method = :letter_opener
   
 end

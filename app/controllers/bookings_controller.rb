@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     last_seat = get_last_seat
     @booking.save
     seat_allocate(last_seat)
-    BookingMailer.booking_email(current_user).deliver_now
+    BookingMailer.booking_email(current_user).deliver_later
     
     redirect_to @booking
   end       
