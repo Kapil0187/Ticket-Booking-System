@@ -109,7 +109,6 @@ class BookingsController < ApplicationController
     else 
       flight = Flight.find_by(id: @booking.bookingable_id)
       flight.update_columns(remaning_seats: flight.remaning_seats+ticket_count)
-
     end
   end
   
