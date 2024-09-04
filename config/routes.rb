@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "show_flight", to:"flights#show_flight"
 
   get "allbookings", to:"allbookings#show"
+  get "history", to:"allbookings#history"
 
   # get 'bookings/show_ticket', to:"bookings#show_ticket"
   resources :bookings 

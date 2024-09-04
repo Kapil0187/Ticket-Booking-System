@@ -9,7 +9,7 @@
   </head>
   <body>
     <%if @bookings.length === 0 %>
-      <h1 class='not-found'>Please First Book your Joruny! </h1>
+      <h1 class='not-found'>You are not having any history! </h1>
     <% else %>
     <table class="table table-bordered">
       <thead>
@@ -18,7 +18,7 @@
           <th scope="col"> Date </th>
           <th scope="col"> Type </th>
           <th scope="col"> Tickets </th>
-          <th scope="col"> Cancel Bookings </th>
+          <th scope="col"> Cancel Bookings </th>  
         </tr>
       </thead>
       <tbody>
@@ -62,9 +62,7 @@
                 </div>
             </td>
             <td>
-            
-              <%= button_to "Cancel Booking", booking_path(booking) ,method: :delete, data: {turbo_confirm: "Are you sure?"}, class:'btn btn-danger'%>
-             
+                <%= button_to "Cancel Booking", booking_path(booking) ,method: :delete, data: {turbo_confirm: "Are you sure?"}, class:'btn btn-danger'%>
             </td>
           </tr>
         <% end %>
