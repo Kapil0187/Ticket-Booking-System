@@ -1,4 +1,4 @@
 class Flight < ApplicationRecord
   belongs_to :direction
-  has_many :bookings ,as: :bookingable
+  has_many :bookings, as: :bookingable
 end

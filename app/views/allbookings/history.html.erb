@@ -3,13 +3,13 @@
    <style>
      .not-found{
 	      padding-top:100px;
-	      margin-left:300px;
+	      margin-left:150px;
       }
     </style>
   </head>
   <body>
     <%if @bookings.length === 0 %>
-      <h1 class='not-found'>You are not having any history! </h1>
+      <h1 class='not-found'>You are not having any previous bookings! </h1>
     <% else %>
     <table class="table table-bordered">
       <thead>
