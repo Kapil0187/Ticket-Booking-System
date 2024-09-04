@@ -73,3 +73,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem "sidekiq", "~> 7.3"
 
 gem 'stripe'
+
+gem 'sinatra'

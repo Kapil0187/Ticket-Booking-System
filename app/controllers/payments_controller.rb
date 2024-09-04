@@ -24,7 +24,6 @@ class PaymentsController < ApplicationController
      
       render json: { requires_action: true, client_secret: payment_intent.client_secret }
     else
-      
       render json: { success: true }
     end
   end
