@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   # get 'bookings/show_ticket', to:"bookings#show_ticket"
   resources :bookings 
   
- 
   get 'payments/success' 
   get 'payments/cancel'
   resources :payments
