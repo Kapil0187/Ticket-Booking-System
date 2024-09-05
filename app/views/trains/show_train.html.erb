@@ -29,14 +29,14 @@
 			<tbody>
 	  		<% @trains.each do |train| %>
 	    		<tr>
-	       		<td> <%= train.id %> </td>
-	       		<td> <%= train.name %> </td>
-	       		<td> <%= train.total_seets %> </td>
-		   		<td> <%= train.remaning_seats %></td>
-	       		<td> <%= train.departure_time.to_fs(:time) %> </td>
-	       		<td> <%= train.arrival_time.to_fs(:time) %> </td>
-	       		<td> <%= train.traintype %> </td>
-	       		<td> <%= train.price %> </td>
+	       			<td> <%= train.id %> </td>
+	       			<td> <%= train.name %> </td>
+	       			<td> <%= train.total_seets %> </td>
+		   			<td> <%= train.remaning_seats %></td>
+	       			<td> <%= train.departure_time.to_fs(:time) %> </td>
+	       			<td> <%= train.arrival_time.to_fs(:time) %> </td>
+	       			<td> <%= train.traintype %> </td>
+	       			<td> <%= train.price %> </td>
 		   		<% if train.remaning_seats != nil %>
 	       			<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: train.id, bookingable_type: "Train", date: params[:date]) %> </td>
 		   		<% else %>
