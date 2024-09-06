@@ -45,15 +45,16 @@ class BookingsController < ApplicationController
     bookingable_id = @booking.bookingable_id
     last_booking_id = nil
 
-    if bookingable_type.eql? 'Bus'
+    case bookingable_type
+    when 'Bus'
       last_booking = Bus.find(bookingable_id).bookings.last
-      last_booking_id = last_booking.nil? ? nil : last_booking.id
+      last_booking_id = last_booking&.id
 
-    elsif bookingable_type.eql? 'Train'
+    when 'Train'
       last_booking = Train.find(bookingable_id).bookings.last
       last_booking_id = last_booking.nil? ? nil : last_booking.id
 
-    elsif bookingable_type.eql? 'Flight'
+    when 'Flight'
       last_booking = Flight.find(bookingable_id).bookings.last
       last_booking_id = last_booking.nil? ? nil : last_booking.id
 
