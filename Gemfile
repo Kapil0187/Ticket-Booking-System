@@ -71,7 +71,14 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+
   gem 'selenium-webdriver'
+
+  gem 'database_cleaner'
+
+  gem 'shoulda'
+
+  gem 'shoulda-matchers'
 end
 
 gem 'devise', '~> 4.9'
@@ -85,3 +92,5 @@ gem 'stripe'
 gem 'sinatra'
 
 gem 'rubocop', require: false
+
+gem 'simplecov'
