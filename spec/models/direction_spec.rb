@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Direction, type: :model do
-
   describe "validations" do
     it { should validate_presence_of(:source) }
     it { should validate_presence_of(:destination) }
