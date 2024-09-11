@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'simplecov'
 
 RSpec.describe Direction, type: :model do
   describe 'validations' do

@@ -1,6 +1,5 @@
 # spec/controllers/flights_controller_spec.rb
 require 'rails_helper'
-require 'simplecov'
 
 RSpec.describe FlightsController, type: :controller do
   describe 'GET #index' do

@@ -1,6 +1,5 @@
 # spec/controllers/home_controller_spec.rb
 require 'rails_helper'
-require 'simplecov'
 
 RSpec.describe HomeController, type: :controller do
   # Create test data

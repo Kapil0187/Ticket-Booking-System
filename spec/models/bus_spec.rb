@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'simplecov'
 
 RSpec.describe Bus, type: :model do
   describe 'validations' do

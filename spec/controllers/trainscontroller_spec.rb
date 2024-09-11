@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'simplecov'
 
 RSpec.describe TrainsController, type: :controller do
   describe 'GET #index' do
