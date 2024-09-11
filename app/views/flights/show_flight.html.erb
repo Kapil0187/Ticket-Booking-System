@@ -31,8 +31,8 @@
 	       		  <td> <%= flight.name %> </td>
 	       		  <td> <%= flight.total_seets %> </td>
 		   	  <td> <%= flight.remaning_seats %></td>
-	       		  <td> <%= flight.departure_time.to_fs(:time) %> </td>
-	       		  <td> <%= flight.arrival_time.to_fs(:time) %> </td>
+	       		  <td> <%= flight.departure_time.to_fs(:time) %> AM </td>
+	       		  <td> <%= flight.arrival_time.to_fs(:time) %> PM </td>
 	       		  <td> <%= flight.price %> </td>
 	       		<% if flight.remaning_seats != nil %>
 		   	  <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight",date: params[:date]) %> </td>
