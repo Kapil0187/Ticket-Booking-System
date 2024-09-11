@@ -65,7 +65,6 @@ class BookingsController < ApplicationController
 
     else
       Booking.find(last_booking_id).tickets.last.seat_no
-
     end
   end
 

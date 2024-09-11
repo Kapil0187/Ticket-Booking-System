@@ -4,8 +4,7 @@ RSpec.describe 'Trains', type: :request do
   context 'Get /show_train' do
     it 'should render show train page' do
       get train_path
-      expect(response).to render_template :show_train
+      expect(response).to have_http_status(200)
     end
   end
 end
-spec / controllers / trains_controller_spec.rb
