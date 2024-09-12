@@ -51,11 +51,11 @@ class BookingsController < ApplicationController
 
     when 'Train'
       last_booking = Train.find(bookingable_id).bookings.last
-      last_booking_id = last_booking.nil? ? nil : last_booking.id
+      last_booking_id = last_booking&.id
 
     when 'Flight'
       last_booking = Flight.find(bookingable_id).bookings.last
-      last_booking_id = last_booking.nil? ? nil : last_booking.id
+      last_booking_id = last_booking&.id
 
     end
 
