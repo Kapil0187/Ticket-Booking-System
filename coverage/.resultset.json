@@ -73,6 +73,28 @@
           null
         ]
       },
+      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/allbookings_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/home/developer/Kapil/Ticketbookingsystem/app/controllers/bookings_controller.rb": {
         "lines": [
           1,
@@ -187,17 +209,51 @@
           null
         ]
       },
-      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/developer/Kapil/Ticketbookingsystem/app/models/direction.rb": {
+      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/flights_controller.rb": {
         "lines": [
           1,
           1,
           null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/home_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/trains_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/models/booking.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
           1,
           1,
           1,
@@ -214,20 +270,39 @@
           null
         ]
       },
-      "/home/developer/Kapil/Ticketbookingsystem/app/models/ticket.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/developer/Kapil/Ticketbookingsystem/app/models/booking.rb": {
+      "/home/developer/Kapil/Ticketbookingsystem/app/models/direction.rb": {
         "lines": [
           1,
           1,
           null,
           1,
           1,
+          1,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/models/flight.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/models/train.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/developer/Kapil/Ticketbookingsystem/app/models/ticket.rb": {
+        "lines": [
           1,
           1,
           null
@@ -245,54 +320,6 @@
       },
       "/home/developer/Kapil/Ticketbookingsystem/app/channels/application_cable/connection.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/allbookings_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/flights_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/home_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
           0,
           0,
           0,
@@ -337,21 +364,6 @@
         "branches": {
         }
       },
-      "/home/developer/Kapil/Ticketbookingsystem/app/controllers/trains_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/home/developer/Kapil/Ticketbookingsystem/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -387,30 +399,6 @@
         "branches": {
         }
       },
-      "/home/developer/Kapil/Ticketbookingsystem/app/models/flight.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/developer/Kapil/Ticketbookingsystem/app/models/train.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/home/developer/Kapil/Ticketbookingsystem/app/sidekiq/my_first_job.rb": {
         "lines": [
           0,
@@ -421,6 +409,6 @@
         }
       }
     },
-    "timestamp": 1726124927
+    "timestamp": 1726141130
   }
 }

@@ -8,10 +8,9 @@ RSpec.describe AllbookingsController, type: :controller do
   let!(:past_booking) { create(:booking, user: user, date: Date.today - 1) }
 
   describe 'GET #index' do
-    it 'responds successfully with an HTTP 200 status code' do
+    it 'returns a successful response' do
       get :index
-      expect(response).to be_successful
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:success)
     end
   end
 end

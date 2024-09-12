@@ -94,7 +94,7 @@ class BookingsController < ApplicationController
   def manage_cancel_tickets
     ticket_count = @booking.tickets.count
 
-    if @bookingable_type.eql? 'Bus'
+    if @booking.bookingable_type.eql? 'Bus'
       bus = Bus.find_by(id: @booking.bookingable_id)
       bus.update_columns(remaning_seats: bus.remaning_seats + ticket_count)
 
