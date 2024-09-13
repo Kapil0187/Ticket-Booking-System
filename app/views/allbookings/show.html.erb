@@ -50,7 +50,7 @@
                           Ticket Id : <%= ticket.id %><br>
                           Seat No : <%= ticket.seat_no %><br>
                           Name : <%= ticket.name %><br>
-                          Gender : <%= ticket.gender %> 
+                          Gender : <%= ticket.gender %>
                           <br><br>
                         <% end %> 
                       </div>
@@ -62,9 +62,7 @@
                 </div>
             </td>
             <td>
-            
               <%= button_to "Cancel Booking", booking_path(booking) ,method: :delete, data: {turbo_confirm: "Are you sure?"}, class:'btn btn-danger'%>
-             
             </td>
           </tr>
         <% end %>

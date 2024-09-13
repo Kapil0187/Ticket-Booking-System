@@ -14,33 +14,33 @@
 		<table class="table container">
 		<thead>
 	  	   <tr>
-	    	     <th scope="col"> Number </th>
-	    	     <th scope="col"> Flight Name </th>
-	    	     <th scope="col"> Total Seats </th>
-		     <th scope="col"> Remaning Seats</th>
-	    	     <th scope="col"> Departure Time </th>
-	    	     <th scope="col"> Arrival Time </th>
-	    	     <th scope="col"> Ticket Price </th>
-	    	     <th scope="col"> Flight Booking </th>
+	    	    <th scope="col"> Number </th>
+	    	    <th scope="col"> Flight Name </th>
+	    	    <th scope="col"> Total Seats </th>
+		    <th scope="col"> Remaning Seats</th>
+	    	    <th scope="col"> Departure Time </th>
+	    	    <th scope="col"> Arrival Time </th>
+	    	    <th scope="col"> Ticket Price </th>
+	    	    <th scope="col"> Flight Booking </th>
 	  	   </tr>
 		</thead>
-		    <tbody>
+		    <tbody>	
 	  		<% @flights.each do |flight| %>
 	    		<tr>
-	       		  <td> <%= flight.id %> </td>
-	       		  <td> <%= flight.name %> </td>
-	       		  <td> <%= flight.total_seets %> </td>
-		   	  <td> <%= flight.remaning_seats %></td>
-	       		  <td> <%= flight.departure_time.to_fs(:time) %> </td>
-	       		  <td> <%= flight.arrival_time.to_fs(:time) %> </td>
-	       		  <td> <%= flight.price %> </td>
+	       		 	<td> <%= flight.id %> </td>
+	       		  	<td> <%= flight.name %> </td>
+	       		  	<td> <%= flight.total_seets %> </td>
+		   	  	<td> <%= flight.remaning_seats %></td>
+	       		  	<td> <%= flight.departure_time.to_fs(:time) %> AM </td>
+	       		  	<td> <%= flight.arrival_time.to_fs(:time) %> PM </td>
+	       		  	<td> <%= flight.price %> </td>
 	       		<% if flight.remaning_seats != nil %>
-		   	  <td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight",date: params[:date]) %> </td>
+		   	  	<td> <%= link_to "Book Ticket", new_booking_path(bookingable_id: flight.id, bookingable_type: "Flight",date: params[:date]) %> </td>
 		   	<% else %>
-		   	  <td> Flight is full </td>
+		   	  	<td> Flight is full </td>
 		   	<% end %>
 	    		<tr>
-	  		<% end %>
+	  		<% end %>		
 		    </tbody>
 		<table>
 		<% end %>

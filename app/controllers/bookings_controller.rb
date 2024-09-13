@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
     @booking.save
     seat_allocate(last_seat)
     BookingMailer.booking_email(current_user).deliver_later
-
     redirect_to @booking
   end
 
@@ -52,11 +51,11 @@ class BookingsController < ApplicationController
 
     when 'Train'
       last_booking = Train.find(bookingable_id).bookings.last
-      last_booking_id = last_booking.nil? ? nil : last_booking.id
+      last_booking_id = last_booking&.id
 
     when 'Flight'
       last_booking = Flight.find(bookingable_id).bookings.last
-      last_booking_id = last_booking.nil? ? nil : last_booking.id
+      last_booking_id = last_booking&.id
 
     end
 
@@ -95,7 +94,7 @@ class BookingsController < ApplicationController
   def manage_cancel_tickets
     ticket_count = @booking.tickets.count
 
-    if @bookingable_type.eql? 'Bus'
+    if @booking.bookingable_type.eql? 'Bus'
       bus = Bus.find_by(id: @booking.bookingable_id)
       bus.update_columns(remaning_seats: bus.remaning_seats + ticket_count)
 
